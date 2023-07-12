@@ -1,3 +1,43 @@
+```
+    1  su -
+    2  sudo apt update
+    3  sudo apt upgrade
+    4  iptables -t nat -A POSTROUTING -o eth1 -j MASQUERADE
+    5  sudo iptables -t nat -A POSTROUTING -o eth1 -j MASQUERADE
+    6  sudo apt install iptables
+    7  cd /etc/iptables/
+    8  cd /etc/
+    9  ls -l
+   10  sudo nano /etc/iptables/rules.v
+   11  sudo nano /etc/iptables/rules.v4
+   12  iptables -t nat -A POSTROUTING -o eth1 -j MASQUERADE
+   13  sudo iptables -t nat -A POSTROUTING -o eth1 -j MASQUERADE
+   14  sudo systemctl start iptables
+   15  sudo apt install iptables
+   16  sudo apt-get install iptables
+   17  exit
+   18  sudo iptables -L -v
+   19  sudo iptables -L
+   20  sudo iptables -S
+   21  sudo iptables -t nat -A POSTROUTING -o eth1 -j MASQUERADE
+   22  netfilter-persistent reload
+   23  iptables -t nat -A POSTROUTING -o eth1 -j MASQUERADE
+   24  sudo apt install netfilter-persistent
+   25  netfilter-persistent reload
+   26  sudo netfilter-persistent reload
+   27  sudo iptables -S
+   28  sudo iptables -L
+   29  sudo su
+   30  sudo apt install slurm-wlm
+   31  dpkg -L slurmctld
+   32  cd /usr/share/doc/slurmctld/
+   33  su
+   34  su -
+   35  history
+   36  sudo su
+   37  history
+```
+```
     1  netfilter-persistent save
     2  apt install iptables-persistent
     3  netfilter-persistent save
