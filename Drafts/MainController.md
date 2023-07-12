@@ -84,47 +84,90 @@
    44  systemctl status slurmd slurmctld 
    45  systemctl restart slurmd slurmctld 
    46  tail -f /var/log/syslog 
-   47  cd /etc/slurm
-   48  mkdir cgroup.conf
-   49  rm -f cgroup.conf
-   50  rm -R cgroup.conf
-   51  nano cgroup.conf
-   52  systemctl status slurmctld
-   53  apt install munge libmunge2 libmunge-dev
-   54  cd /etc/munge/
-   55  ls -l
-   56  python3 -m http.server
-   57  ls -l
-   58  systemctl enable munge
-   59  systemctl start munge
-   60  munge -n | unmunge
-   61  cd /etc/slurm
-   62  ls -l
-   63  nano slurm.conf 
-   64  systemctl restart slurmctld
-   65  systemctl status slurmctld
-   66  nano slurm.conf 
-   67  cd /run
-   68  ls -l
-   69  cd /etc/slurm
-   70  ls -l
-   71  python3 -m http.server
-   72  sinfo
-   73  systemctl restart slurmctld
-   74  systemctl status slurmctld
-   75  nano slurm.conf 
-   76  systemctl restart slurmctld
-   77  systemctl status slurmctld
-   78  systemctl restart slurmctld
-   79  systemctl status slurmctld
-   80  sinfo
-   81  systemctl status slurmctld
+   47  cd /usr/share/doc/slurmctld/
+   48  ls -l
+   49  python3 -m http.server
+   50  cd /lib/systemd/system
+   51  nano slurmctld.service 
+   52  systemctl restart slurmctld.service 
+   53  systemctl daemon-reload
+   54  systemctl restart slurmctld.service
+   55  systemctl status slurmctld.service
+   56  nano slurmctld.service 
+   57  cd /etc/slurm
+   58  ls -l
+   59  nano slurm.conf 
+   60  systemctl restart slurmctld.service
+   61  nano slurm.conf 
+   62  systemctl restart slurmctld.service
+   63  systemctl status slurmctld.service
+   64  nano slurm.conf 
+   65  munge -n
+   66  cd /etc/munge
+   67  ls -l
+   68  python3 -m http.server
+   69  chown -R munge: /etc/munge/ /var/log/munge/ /var/lib/munge/ /run/munge/
+   70  chmod 0700 /etc/munge/ /var/log/munge/ /var/lib/munge/
+   71  chmod 0755 /run/munge/
+   72  systemctl restart munge
+   73  systemctl status munge
+   74  munge -n
+   75  systemctl restart slurmctld.service
+   76  systemctl status slurmctld.service
+   77  ls -l
+   78  cd /etc/slurm
+   79  ls -l
+   80  nano slurm.conf 
+   81  slurmd -C
    82  nano slurm.conf 
-   83  systemctl restart slurmctld
-   84  systemctl status slurmctld
+   83  systemctl restart slurmctld.service
+   84  systemctl status slurmctld.service
    85  sinfo
-   86  srun -N2 -l /bin/hostname
-   87  srun -N3 -l /bin/hostname
-   88  nano slurmtest.sh
-   89  sbatch slurmtest.sh && squeue 
-   90  history
+   86  srun -N3 -l /bin/hostname
+   87  cd /etc/slurm
+   88  mkdir cgroup.conf
+   89  rm -f cgroup.conf
+   90  rm -R cgroup.conf
+   91  nano cgroup.conf
+   92  systemctl status slurmctld
+   93  apt install munge libmunge2 libmunge-dev
+   94  cd /etc/munge/
+   95  ls -l
+   96  python3 -m http.server
+   97  ls -l
+   98  systemctl enable munge
+   99  systemctl start munge
+  100  munge -n | unmunge
+  101  cd /etc/slurm
+  102  ls -l
+  103  nano slurm.conf 
+  104  systemctl restart slurmctld
+  105  systemctl status slurmctld
+  106  nano slurm.conf 
+  107  cd /run
+  108  ls -l
+  109  cd /etc/slurm
+  110  ls -l
+  111  python3 -m http.server
+  112  sinfo
+  113  systemctl restart slurmctld
+  114  systemctl status slurmctld
+  115  nano slurm.conf 
+  116  systemctl restart slurmctld
+  117  systemctl status slurmctld
+  118  systemctl restart slurmctld
+  119  systemctl status slurmctld
+  120  sinfo
+  121  systemctl status slurmctld
+  122  nano slurm.conf 
+  123  systemctl restart slurmctld
+  124  systemctl status slurmctld
+  125  sinfo
+  126  srun -N2 -l /bin/hostname
+  127  srun -N3 -l /bin/hostname
+  128  nano slurmtest.sh
+  129  sbatch slurmtest.sh && squeue 
+  130  history
+  131  nano /etc/iptables/rules.v4
+  132  exit
+  133  history
