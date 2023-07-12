@@ -1,0 +1,61 @@
+    1  apt update
+    2  apt upgrade
+    3  apt install munge libmunge2 libmunge-dev
+    4  cd /etc/munge/
+    5  rm munge.key 
+    6  wget 
+    7  wget 10.0.129.1:8000/munge.key
+    8  ls -l
+    9  systemctl enable munge
+   10  systemctl start munge
+   11  munge -n | unmunge
+   12  cd /slurm
+   13  cd /etc/slurm
+   14  apt install slurm-wlm
+   15  cd /etc/slurm
+   16  ls -l
+   17  wget 10.0.129.1:8000/slurm.conf
+   18  wget 10.0.129.1:8000/cgroup.conf
+   19  cd /lib/systemd/system
+   20  nano slurmd.service 
+   21  systemctl daemon-reload
+   22  systemctl start slurmd
+   23  systemctl status slurmd
+   24  cd /etc/slurm
+   25  ls -l
+   26  nano slurm.conf 
+   27  systemctl restart slurmd
+   28  systemctl status slurmd
+   29  nano slurm.conf 
+   30  systemctl restart slurmd
+   31  systemctl status slurmd
+   32  munge -n
+   33  cd /etc/munge
+   34  ls -l
+   35  rm munge.key 
+   36  ls -l
+   37  wget 10.0.129.1:8000/munge.key
+   38  systemctl restart  munge
+   39  systemctl status munge.service
+   40  ls -l
+   41  chown -R munge: /etc/munge/ /var/log/munge/ /var/lib/munge/ /run/munge/
+   42  chmod 0700 /etc/munge/ /var/log/munge/ /var/lib/munge/
+   43  chmod 0755 /run/munge/
+   44  systemctl restart munge
+   45  systemctl statys munge.key 
+   46  systemctl status munge.service
+   47  ls -l
+   48  chmod 600 munge.key 
+   49  systemctl restart munge
+   50  systemctl status munge.service
+   51  munge -n
+   52  systemctl restart slurmd
+   53  systemctl status slurmd
+   54  cd /etc/slurm
+   55  ls -l
+   56  nano slurm.conf 
+   57  systemctl restart slurmd
+   58  systemctl status slurmd
+   59  hostnamectl set-hostname node1
+   60  sudo su
+   61  history
